@@ -48,7 +48,7 @@ node* IAE(node *head)
     node *temp;
     node *ptr;
     temp=(node*)malloc(sizeof(node));
-    printf("Enter DATA %t");
+    printf("Enter DATA \t");
     scanf("%d",&temp->data);
     ptr=head;
     while(ptr->next != NULL)
