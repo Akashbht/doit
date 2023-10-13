@@ -54,7 +54,7 @@ class String{
 num = n;
    }
 
-    String operator++(){
+    String operator+(){
         String y;
        y.str = str;
        y.resultedoutput = str + to_string(num);
@@ -68,7 +68,7 @@ int main(){
     string str = "hellop";
     int n = 7;
     String obj1(str,n),obj2;
-    obj2 = ++obj1;//invoke operator overloading
+    obj2 = +obj1;//invoke operator overloading
     obj2.display();
 return 0;
 }
