@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct arrstack {
+struct stack {
     int *arr;
     int capacity, size, top;
 };
 
-void initialisearr(struct arrstack *s1, int cap) {
+void initialise(struct stack *s1, int cap) {
     s1->capacity = cap;
     s1->size = 0;
     s1->top = -1;
     s1->arr = (int *)malloc(sizeof(int) * cap);
 }
 
-void pusharr(struct arrstack *s1, int val) {
+void push(struct stack *s1, int val) {
     if (s1->size == s1->capacity) {
-        printf("arrstack Overflow\n");
+        printf("stack Overflow\n");
         return;
     }
     s1->top++;
@@ -23,9 +23,9 @@ void pusharr(struct arrstack *s1, int val) {
     s1->size++;
 }
 
-int poparr(struct arrstack *s1) {
+int pop(struct stack *s1) {
     if (s1->top == -1) {
-        printf("arrstack Underflow\n");
+        printf("stack Underflow\n");
         return -1;
     }
     int val = s1->arr[s1->top];
@@ -34,9 +34,9 @@ int poparr(struct arrstack *s1) {
     return val;
 }
 
-void printstackarr(struct arrstack *s1) {
+void printstack(struct stack *s1) {
     if (s1->top == -1) {
-        printf("Empty arrstack\n");
+        printf("Empty stack\n");
         return;
     }
     for (int i = 0; i <= s1->top; i++) {
@@ -45,25 +45,43 @@ void printstackarr(struct arrstack *s1) {
     printf("\n");
 }
 
-int toparr(struct arrstack *s1) {
+int top(struct stack *s1) {
     if (s1->top == -1) {
-        printf("Empty arrstack\n");
+        printf("Empty stack\n");
         return -1;
     }
     return s1->arr[s1->top];
 }
 
-int main() {
-    struct arrstack s1;
-    initialisearr(&s1, 10);
-    printstackarr(&s1);
-    for (int i = 1; i < 11; i++) {
-        pusharr(&s1, i);
+struct stack* reverse(struct stack* s){
+    if(s->top==-1){
+        printf("empty stack");
+        return NULL;
     }
-    printstackarr(&s1);
+    struct stack* temp = (struct stack*)malloc(sizeof(struct stack));
+    initialise(temp, 10);
+    while(s->top != -1){
+        push(temp,pop(s));
+    }
+
+    return temp;
+}
+
+int main() {
+    struct stack s1;
+    initialise(&s1, 10);
+    printstack(&s1);
+    for (int i = 1; i < 11; i++) {
+        push(&s1, i);
+    }
+    printstack(&s1);
     int val = pop(&s1);
     printf("Popped val: %d\n", val);
-    printstackarr(&s1);
+    printstack(&s1);
+
+    struct stack* s2 = reverse(&s1);
+    printstack(s2);
+
     return 0;
 }
 
