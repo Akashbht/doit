@@ -1,4 +1,7 @@
 {
     "code-runner.runInTerminal": true,
-    "code-runner.saveFileBeforeRun": true
+    "code-runner.saveFileBeforeRun": true,
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }
