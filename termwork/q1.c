@@ -22,7 +22,7 @@ void initialisequeue(struct queue ** q){
     temp -> size = 0;
     *q = temp;
 }
-// Function to create a new node
+
 struct node* createnode(char id, const char* name, int sale, char grade) {
     struct node* newnode = (struct node*)malloc(sizeof(struct node));
     newnode->product_id = id;
@@ -33,7 +33,7 @@ struct node* createnode(char id, const char* name, int sale, char grade) {
     return newnode;
 }
 
-// Function to insert a new node at the end of the queue
+
 void enqueue(struct queue* q, char id, const char* name, int sale, char grade) {
     struct node* newnode = createnode(id, name, sale, grade);
     if (q -> rear == NULL) {
@@ -46,15 +46,15 @@ void enqueue(struct queue* q, char id, const char* name, int sale, char grade) {
     printf("product %c enqueued to the queue\n", id);
 }
 
-// Function to remove a node from the front of the queue
+
 void dequeue(struct queue* q) {
     if (q->rear == NULL) {
         printf("queue is empty. Cannot dequeue.\n");
     } else {
         struct node* temp = q->front;
         q->front = q->front->next;
-        if (q -> front == NULL) {
-            q -> rear = NULL;
+        if (q->front == NULL){
+            q->rear = NULL;
         }
         printf("product %c dequeued from the queue\n", temp->product_id);
         free(temp);
@@ -62,29 +62,36 @@ void dequeue(struct queue* q) {
     q->size--;
 }
 
+
 void insertelements(struct queue** q){
-    // insert elements in the queue
+ 
     int a;
     printf("enter the no. of products :");
     scanf("%d",&a);
     char id,grade;
     int sale;
     char* name;
-    for(int i =0; i< a;i++){
-        printf("enter %d product id:\n",i+1);
-        scanf("%c",&id);
-        printf("enter %d product name:\n",i+1);
-        gets(name);
-        printf("enter %d product sale:\n",i+1);
-        scanf("%d",&sale);
-        printf("enter %d product grade:\n",i+1);
-        scanf("%c",&grade);
+    getchar();  
 
-        enqueue(*q,id,name,sale,grade);
+    for (int i = 0; i < a; i++) {
+        printf("enter %d product id:\n", i + 1);
+        scanf(" %c", &id);
+
+        printf("enter %d product name:\n", i + 1);
+        getchar();  
+        fgets(name, sizeof(name), stdin);
+        name[strcspn(name, "\n")] = '\0';  
+
+        printf("enter %d product sale:\n", i + 1);
+        scanf("%d", &sale);
+
+        printf("enter %d product grade:\n", i + 1);
+        scanf(" %c", &grade);
+
+        enqueue(*q, id, name, sale, grade);
     }
 }
 
-// Function to display the elements of the queue
 void displayQueue(struct queue* q) {
     printf("\n\n\n\n");
     if (q->front == NULL) {
@@ -104,11 +111,8 @@ int main() {
     struct queue *q;
     initialisequeue(&q);
     insertelements(&q);
-    
-    // enqueue(q,'A',"apple",100,'B');
-    // enqueue(q,'C',"carrot", 250,'D');
-    // enqueue(q,'E',"eggplant",300,'F');
     displayQueue(q);
-
+    printf("\n dequeue:\n");
+    dequeue(q);
     return 0;
 }
