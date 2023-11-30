@@ -54,15 +54,24 @@ int main() {
     int i = 0;
     printf("enter elements for List A:(-1 to exit)");
     while(i!= -1){
+        
         scanf("%d", &i);
+        if(i==-1){
+            break;
+        }
         insertend(&A,i);
     }
     struct node* B = NULL;
     i = 0; 
     printf("enter elements for List B:(-1 to exit)");
     while(i!= -1){
+        
         scanf("%d", &i);
+        if(i==-1){
+            break;
+        }
         insertend(&B,i);
+
     }
     struct node* S = mergealternate(A, B);
 
