@@ -1,10 +1,11 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 
 struct node {
     int data;
     struct node* next;
 };
+
 
 struct node* createnode(int data) {
     struct node* newnode = (struct node*)malloc(sizeof(struct node));
@@ -25,13 +26,12 @@ void insertend(struct node** head, int data) {
         temp->next = newnode;
     }
 }
-
 struct node* partitionlist(struct node* head, int v) {
     struct node* lesshead = NULL;
     struct node* lesstail = NULL;
     struct node* greaterhead = NULL;
     struct node* greatertail = NULL;
-
+    struct node* node_with_v = NULL;
     while (head != NULL) {
         if (head->data < v) {
             if (lesshead == NULL) {
@@ -40,6 +40,8 @@ struct node* partitionlist(struct node* head, int v) {
                 lesstail->next = head;
                 lesstail = head;
             }
+        }else if(head->data ==v){
+            node_with_v = head;
         } else {
             if (greaterhead == NULL) {
                 greaterhead = greatertail = head;
@@ -50,17 +52,35 @@ struct node* partitionlist(struct node* head, int v) {
         }
         head = head->next;
     }
-
-    if (lesshead == NULL) {
-        return greaterhead;
+    if(node_with_v){
+        if (lesshead == NULL) {
+        node_with_v -> next = greaterhead;
+        return node_with_v;
     } else {
-        lesstail->next = greaterhead;
+        lesstail->next = node_with_v;
+        node_with_v ->next = greaterhead;
+        // Check if greatertail is not NULL before setting its next to NULL
         if (greatertail != NULL) {
             greatertail->next = NULL;
         }
         return lesshead;
     }
+    }else{
+        if (lesshead == NULL) {
+        return greaterhead;
+    } else {
+        lesstail->next = greaterhead;
+        
+        // Check if greatertail is not NULL before setting its next to NULL
+        if (greatertail != NULL) {
+            greatertail->next = NULL;
+        }
+        return lesshead;
+    }
+    }
+    
 }
+
 
 void displaylist(struct node* head) {
     while (head != NULL) {
