@@ -30,29 +30,19 @@ void inorder(struct node* root){
 
 
 
-void insert(struct node* root, int val) {
-    struct node* prev = NULL;
-    struct node* current = root;
+struct node* insert(struct node* root, int val) {
+    if (root == NULL){
+        root = createnode(val);
+        return root;
+    }
 
-    while (current != NULL) {
-        prev = current;
-        if (val == current->data) {
-            return;
-        } else if (val < current->data) {
-            current = current->left;
-        } else {
-            current = current->right;
+    if(root->data > val){
+        root -> left = insert(root->left , val);
+    }
+    else if(root->data <= val){
+        root -> right = insert(root->right , val);
         }
-    }
-
-    struct node* temp = createnode(val);
-    if (prev == NULL) {
-        root = temp; 
-    } else if (val < prev->data) {
-        prev->left = temp;
-    } else {
-        prev->right = temp;
-    }
+    return root;
 }
 
 int search(struct node* root, int val){
@@ -70,6 +60,45 @@ int search(struct node* root, int val){
     }
 }
 
+int minvaluenode(struct node* root){
+    // if(root == NULL) return 0;
+    while(root->left){
+        root = root->left;
+    }
+    return root->data;
+}
+
+struct node* delete(struct node* root, int val){
+    if(root == NULL)return NULL;
+    if(root -> data == val){
+        if(!root->left && !root->right) {
+            free(root);
+            return NULL;}
+        if(!root->left && root->right){
+            struct node* temp = root -> right;
+            free(root);
+            return temp;
+        }
+        if(root->left && !root->right){
+            struct node *temp = root->left;
+            free(root);
+            return temp;
+        }
+        if(root-> left && root->right){
+            int mini = minvaluenode(root->right);
+            root -> data = mini;
+            root -> right = delete(root->right,mini);
+            return root;
+        }
+    }
+    if(root->data < val) root->right = delete(root->right, val);
+    else root->left = delete(root->left, val);
+
+    return root;
+}
+
+
+
 int main() {
     struct node* root = createnode(5);
     struct node* p1 = createnode(3);
@@ -80,30 +109,17 @@ int main() {
     root->right = p2;
     p1->left = p3;
     p1->right = p4;
-
     // inorder(root);
-    // printf("\n");
-    insert(root,7);
-    insert(root,10);
-    insert(root,8);
-    insert(root,9);
-    insert(root,11);
-
+    root = insert(root,7);
+    root = insert(root,10);
+    root = insert(root,8);
+    root = insert(root,9);
+    root = insert(root,11);
 
     inorder(root);
+    printf("\n");
 
-    int val = 6;
-    if(search(root , val)){
-        printf("\nfound %d", val );
-    }
-    else printf("not found"); 
-    val = 14;
-    if(search(root , val)){
-        printf("\nfound %d", val );
-    }
-    else printf("\nnot found"); 
-
-
-
+    root = delete(root,8);
+    inorder(root);
 	return 0;
 }
