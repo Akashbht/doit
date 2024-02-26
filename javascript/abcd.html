@@ -1,0 +1,103 @@
+<!DOCTYPE html> <html>
+    <head>
+        <title>Javascript</title>
+         <!-- <script src="cwdjs1.js"></script> -->
+
+    </head>
+    <body>
+
+        <input type ="text" id ="textinput">
+        <button id ="changetext">change the text</button>
+        <p id="change">this is some text</p>
+     
+        <!-- <p id = "text">hello world</p>
+     
+
+        <button id = "mybutton">Change text</button>
+        <button id = "secondbutton">append text</button>
+        <p id = "secondp">javascript is ....</p>
+
+        <p id = "empty"></p>
+        <button id="create">create para</button>
+
+        <p id="styletext">Style this trext </p>
+        <button id = "stylebutton">Style</button>
+ -->
+
+        <script type = "text/javascript">
+
+
+            // changin existing text to user input text;
+            
+            document.getElementById("changetext").onclick = function(){
+                var  x = "";
+                x = document.getElementById("textinput").value;
+                document.getElementById("change").innerHTML = x;
+                
+            }
+
+
+            // // document.getElementById("text").innerHTML = "Hello Rob";
+            // // just replaced the element with text id with hello rob
+
+
+            // // document.getElementById("mybutton").onclick = function(){
+            // //     alert("button clicked");
+            // //     var x = prompt("Enter new Text:");
+            // //     if (x == null || x == "") {
+            // //       alert("Text field is empty!");
+            // //     }
+            // //     else {
+            // //         document.getElementById("text").innerHTML=x;
+            // //     }
+            // // }
+                
+            // document.getElementById("mybutton").onclick = function(){
+            //     document.getElementById("secondp").innerHTML = "boring"; 
+            // }
+            
+            // // document.getElementById("secondbutton").onclick = function(){
+            // //     document.getElementById("secondp").innerHTML = document.getElementById("secondp").innerHTML + "boring";
+            // // }
+
+
+            // // appending text to html appends
+            // document.getElementById("secondbutton").onclick = function(){
+            //     document.getElementById("secondp").innerHTML = "i think " + document.getElementById("secondp").innerHTML + "boring";
+            // }
+
+
+            // // inserting text into empty para
+            // document.getElementById("create").onclick = function(){
+            //     document.getElementById("empty").innerHTML = "<h1>Hi there </h1>";
+            // }
+
+
+            // // adding style to para
+            // /*
+            // // adding text color 
+
+            // document.getElementById('stylebutton').onclick = function() {
+            //     document.getElementById("styletext").style.color = "red";
+            // }
+            // */
+
+            // // removing text 
+            // document.getElementById('stylebutton').onclick = function() {
+            //     document.getElementById("styletext").style.display = "none";
+            // }
+
+
+
+
+
+
+
+
+
+
+        </script>
+        
+    </body>
+            
+</html>

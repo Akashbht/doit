@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="jquery.js"></script>
+
+        
+        <title>Jquery</title>
+        
+        
+        <style type ="text/css">
+            .square{
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                margin: 50px;
+                padding: 20px;
+                /* position: relative; */
+            }
+            #circle{
+                width: 75px;
+                height: 75px;
+                background-color: red;
+                border-radius: 50%;
+                margin: 50px;
+                padding: 20px;
+                /* position: relative; */
+            }
+        </style>
+    </head>
+    <body>
+        
+
+        <p id = "togglet">play with this text </p>
+        <button id = "toggleb">TOGGLE TEXT</button>
+        <p>Hi there !</p>
+
+        <p>I'm bob.</p>
+
+
+        
+        <p>THis is some text </p>
+            
+
+        <div class = "square"></div>
+        <div id  = "circle"></div>
+        <div class = "square"></div>
+
+
+
+
+        <script type = "text/javascript">
+            
+            // $(".square").click(function(){
+            //     alert("You clicked on the square!");
+            // });
+
+            // $("#circle").click(function(){    //when circle is clicked then this function is invoked 
+            //     $("p").html("enter this in the paragraph.")  // this line will update then value of p tags in the html document
+            // });
+
+
+            // hovering to change content 
+
+            // $("#circle").hover(function(){    //when circle is clicked then this function is invoked 
+            //     $("p").html("enter this in the paragraph.")  // this line will update then value of p tags in the html document
+            // });
+
+               
+            // changing css
+           
+            /*
+                        $("#circle").hover(function(){    //when circle is clicked then this function is invoked 
+                $("#circle").css("background-color","purple");  // this line will update then value of p tags in the html document
+
+
+                // $("#circle").css("border-radius","70%");
+            });
+
+            // removing div by clicking them 
+            $("div").click(function(){
+                $(this).css("display","none");
+            })
+
+            */
+
+
+
+            // $("#circle").hover(function(){
+                
+            //     // $("p").html("this text is changed ............")
+            //     alert($("p").html());
+            // });
+
+
+            // CHANGING CSS IN JQUERY 
+            
+            
+            // changing background color 
+
+            // $("#circle").click(function(){
+            //     $("#circle").css("background-color","black");
+            // });
+
+            // removing element by clicking them
+            // $("div").click(function(){
+            //     $(this).css("display","none");
+            // });
+
+            // fading content 
+
+            // .fadeOut()    // fades the div 
+
+            // $("div").click(function(){
+            //     $(this).fadeOut("slow");
+            // });
+
+            
+            
+            // callback function with jquery
+
+            // $("div").click(function(){
+
+            //     $(this).fadeOut("slow",function(){
+                
+            //         alert("fadeout is done");
+                
+            //     });
+            // });
+
+
+
+            // toggle button to show and hide text
+
+
+            let i = true;
+            $("#toggleb").click(function(){
+                if (i) {
+                    $("#togglet").fadeOut();
+                    i = false;
+                                    }else{
+                    $("#togglet").fadeIn();
+                    i = true;
+                    
+                }
+            });
+                
+            
+
+            // animate a  circle and change its color
+
+            $("#circle").click(function(){
+                $(this).animate({width:"350px",
+                 height:"350px", 
+                marginTop  :"100px",
+            marginLeft:("100px")} ,2000, function(){
+                $(this).css("background-color","black")
+            });
+            });
+
+
+            //checking string mathing using js 
+            // regex is variable is cheked in string 
+            
+            
+            let regex = /is/ ;
+            // let regex = /is/i ;  // that i will enable case sensitive search 
+            // let regex = /is/g ;  // that g i.e global  will search and return an array of the matched stings;
+
+            let string = "regex is great";
+            let result = string.match(regex);
+
+            
+
+
+            alert(result);
+
+
+</script>
+    </body>
+</html>

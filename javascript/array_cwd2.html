@@ -1,0 +1,65 @@
+<html>
+
+    <head>
+        <title>Javascript</title>
+        <p>What is the magic word?</p>
+        <input type="text"  id="inputmagic">
+        <button id = "checkbutton">check the magic</button>
+        
+        <style>
+
+
+
+        </style>
+
+
+
+    </head>
+    <body>
+        
+        <script type = "text/javascript">
+
+            // var myarray = new Array();
+
+            // myarray[0] = " pizza";
+            // myarray[1] = "chocolate";
+
+            // // console.log(myarray);
+            // // console.log(myarray.length);
+
+            // var tweets = ["Morning","everybody","coffee","i love1"];
+
+            // // alert(tweets[0])
+
+            // tweets.push("chocolate");
+            
+
+            // tweets.splice(1,0,"cornflakes");
+            // // console.log(tweets);
+
+
+            var x  = 1;
+            document.getElementById('checkbutton').onclick = function() {
+
+                var x = document.getElementById('inputmagic').value;
+                if(x == "hello"){
+                    document.getElementById("checkbutton").innerText = "correct";
+                    alert("coorect");
+                    
+                }
+                else{
+                    document.getElementById("checkbutton").innerText = "incorrect";
+                }
+            }
+
+
+
+            
+            
+        </script>
+
+
+    </body>
+
+
+</html>
