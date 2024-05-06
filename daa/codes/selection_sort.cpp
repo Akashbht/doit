@@ -16,46 +16,18 @@ using namespace std;
      
 // }
 
-
-void selection_sort(int* arr, int size){
-    for(int i = 0; i< size;i++){
+void selection_sort(int* arr, int n){
+    for(int i = 0; i<n-1;i++){
+        int index = i;
         int min = i;
-        for(int j = i; j< size;j++){
+        for(int j = i+1;j<n;j++){
             if(arr[j]<arr[min]){
                 min = j;
             }
         }
-        int temp = arr[i];
-        arr[i] = arr[min];
-        arr[min] = temp;
+        swap(arr[index],arr[min]);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// void selection_sort(int* arr, int n){
-//     for(int i = 0; i<n-1;i++){
-//         int index = i;
-//         int min = i;
-//         for(int j = i+1;j<n;j++){
-//             if(arr[j]<arr[min]){
-//                 min = j;
-//             }
-//         }
-//         swap(arr[index],arr[min]);
-//     }
-// }
 
 void printarr(int arr[], int n ){
     int i = 0 ;

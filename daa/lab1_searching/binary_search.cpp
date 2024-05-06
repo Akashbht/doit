@@ -2,12 +2,15 @@
 using namespace std;
 
 bool recursive_binarysearch(int* arr, int start, int end , int value){
-    int mid = (start + end )/2;
-    if(start > end) return false;
-    
-    else if (arr[mid] == value) return true;
-    else if (value < arr[mid]) return recursive_binarysearch(arr, start, mid - 1, value);
-    else return recursive_binarysearch(arr, mid + 1, end, value);
+    if(start<=end){
+        int mid = start +(end-start)/2;
+        if(arr[mid]==value) return true;
+        else if(arr[mid]>value) return recursive_binarysearch(arr,start, mid-1, value);
+        else return recursive_binarysearch(arr,mid+1,end,value);
+
+    }else{
+        return false;
+    }
 
 }
 
