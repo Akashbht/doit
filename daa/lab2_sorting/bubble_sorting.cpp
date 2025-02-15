@@ -15,7 +15,7 @@ void bubble_sort(int arr[], int n ){
      
 }
 
-
+printf("lawdew ka bubble");
 void printarr(int arr[], int n ){
     int i = 0 ;
     while(i<n){
